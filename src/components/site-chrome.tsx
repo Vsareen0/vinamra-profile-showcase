@@ -31,6 +31,7 @@ export function PersonaTabs() {
               navigate({
                 to: ".",
                 search: (prev: Record<string, unknown>) => ({ ...prev, as: p.id === "all" ? undefined : p.id }),
+                resetScroll: false,
               })
             }
             className={cn(
