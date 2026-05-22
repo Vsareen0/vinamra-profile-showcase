@@ -75,25 +75,20 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  validateSearch: zodValidator(rootSearchSchema),
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Vinamra Sareen — Engineer · AI · Backend · Frontend" },
+      { name: "description", content: "Portfolio of Vinamra Sareen — full-stack, AI, backend and computer-vision engineer. Switch personas to see the relevant slice of skills and projects." },
+      { name: "author", content: "Vinamra Sareen" },
+      { property: "og:title", content: "Vinamra Sareen — Engineer Portfolio" },
+      { property: "og:description", content: "Full-stack, AI, backend and computer-vision engineer." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
-    links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-    ],
+    links: [{ rel: "stylesheet", href: appCss }],
   }),
   shellComponent: RootShell,
   component: RootComponent,
