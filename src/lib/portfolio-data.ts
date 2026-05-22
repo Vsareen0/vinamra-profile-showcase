@@ -62,6 +62,8 @@ export const SKILLS: Skill[] = [
   { name: "Vertex AI", group: "Tools", personas: ["ai", "cv"] },
   { name: "Webpack", group: "Tools", personas: ["fullstack"] },
   { name: "Linux / Bash", group: "Tools", personas: ["backend", "ai"] },
+  { name: "Statsig", group: "Tools", personas: ["fullstack", "backend"] },
+  { name: "Pendo", group: "Tools", personas: ["fullstack"] },
 ];
 
 export type Project = {
