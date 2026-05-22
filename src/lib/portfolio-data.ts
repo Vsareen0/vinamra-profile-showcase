@@ -19,8 +19,8 @@ export const PROFILE = {
     "Software engineer with 5+ years shipping production systems — currently SDE III at HighLevel on the Growth & Onboarding team. I move comfortably across full-stack web, backend microservices, applied AI/ML, and computer vision, with a strong mathematical foundation from formal coursework in Linear Algebra, Calculus, and Discrete Mathematics.",
   stats: [
     { value: "5+", label: "Years shipping" },
-    { value: "20+", label: "Certifications" },
-    { value: "14%→5%", label: "Onboarding drop-off" },
+    { value: "24+", label: "Certifications" },
+    { value: "4", label: "Engineering personas" },
   ],
 };
 
