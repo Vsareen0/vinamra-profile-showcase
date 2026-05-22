@@ -64,6 +64,9 @@ export const SKILLS: Skill[] = [
   { name: "Linux / Bash", group: "Tools", personas: ["backend", "ai"] },
   { name: "Statsig", group: "Tools", personas: ["fullstack", "backend"] },
   { name: "Pendo", group: "Tools", personas: ["fullstack"] },
+  { name: "Cursor", group: "Tools", personas: ["fullstack", "ai", "backend", "cv"] },
+  { name: "Claude Code", group: "Tools", personas: ["fullstack", "ai", "backend", "cv"] },
+  { name: "GitHub Copilot", group: "Tools", personas: ["fullstack", "backend"] },
 ];
 
 export type Project = {
