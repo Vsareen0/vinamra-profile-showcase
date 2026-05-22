@@ -55,6 +55,13 @@ export const SKILLS: Skill[] = [
   { name: "Linear Algebra", group: "Mathematics", personas: ["ai", "cv"] },
   { name: "Calculus", group: "Mathematics", personas: ["ai"] },
   { name: "Discrete Mathematics", group: "Mathematics", personas: ["ai", "backend"] },
+  { name: "FFmpeg", group: "Tools", personas: ["cv", "backend"] },
+  { name: "Git", group: "Tools", personas: ["fullstack", "backend", "ai", "cv"] },
+  { name: "Postman", group: "Tools", personas: ["backend", "fullstack"] },
+  { name: "Jupyter", group: "Tools", personas: ["ai", "cv"] },
+  { name: "Vertex AI", group: "Tools", personas: ["ai", "cv"] },
+  { name: "Webpack", group: "Tools", personas: ["fullstack"] },
+  { name: "Linux / Bash", group: "Tools", personas: ["backend", "ai"] },
 ];
 
 export type Project = {
