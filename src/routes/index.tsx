@@ -100,7 +100,7 @@ function Index() {
             return (
               <button
                 key={p.id}
-                onClick={() => navigate({ to: ".", search: (prev: Record<string, unknown>) => ({ ...prev, as: p.id }) })}
+                onClick={() => navigate({ to: ".", search: (prev: Record<string, unknown>) => ({ ...prev, as: p.id }), resetScroll: false })}
                 className={cn(
                   "group relative overflow-hidden rounded-2xl border p-5 text-left transition-all",
                   active
