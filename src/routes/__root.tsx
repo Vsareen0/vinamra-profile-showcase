@@ -7,8 +7,15 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+import { z } from "zod";
+import { fallback, zodValidator } from "@tanstack/zod-adapter";
+import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 
 import appCss from "../styles.css?url";
+
+const rootSearchSchema = z.object({
+  as: fallback(z.enum(["all", "fullstack", "ai", "backend", "cv"]), "all").optional(),
+});
 
 function NotFoundComponent() {
   return (
