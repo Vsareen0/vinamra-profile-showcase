@@ -3,7 +3,7 @@ import { PERSONAS, PROFILE, SKILLS, type Persona } from "@/lib/portfolio-data";
 import { usePersona } from "@/components/site-chrome";
 import { ProjectsGrid } from "@/components/portfolio-sections";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Mail, MapPin, Sparkles } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Sparkles, Linkedin, Github } from "lucide-react";
 import { cn } from "@/lib/utils";
 import meImg from "@/assets/vinamra.jpeg";
 
