@@ -51,7 +51,7 @@ function Index() {
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 shadow-[0_0_30px_-8px_var(--accent-glow)]">
-                <Link to="/contact" search={search}><Mail className="mr-2 size-4" /> Hire me</Link>
+                <Link to="/contact" search={search}><Mail className="mr-2 size-4" /> Connect with me</Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="border-border/60">
                 <Link to="/projects" search={search}>See projects <ArrowRight className="ml-2 size-4" /></Link>
