@@ -17,41 +17,54 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      - uses: oven-sh/setup-bun@v2
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      - name: Build (static prerender)
+      - name: Build
         env:
-          # Project pages are served from https://<user>.github.io/<repo>/.
-          # Leave empty (BASE_PATH: "/") if you use a custom domain or a user/org site.
           BASE_PATH: /${{ github.event.repository.name }}/
         run: bun run build
 
-      - name: Prepare static output
+      - name: Inspect build output
         run: |
-          # SPA fallback + disable Jekyll processing
-          cp dist/client/index.html dist/client/404.html || true
-          touch dist/client/.nojekyll
+          echo "=== .output ==="
+          find .output -maxdepth 3 -type f | head -100
 
-      - uses: actions/configure-pages@v5
+      - name: Prepare GitHub Pages output
+        run: |
+          touch .output/public/.nojekyll
 
-      - uses: actions/upload-pages-artifact@v3
+          if [ -f ".output/public/index.html" ]; then
+            cp .output/public/index.html .output/public/404.html
+          fi
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/client
+          path: .output/public
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
-      - id: deployment
+      - name: Deploy
+        id: deployment
         uses: actions/deploy-pages@v4
