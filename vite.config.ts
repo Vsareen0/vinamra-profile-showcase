@@ -11,23 +11,9 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
-    // Static prerender so the site can be served from GitHub Pages.
-    prerender: {
-      enabled: true,
-      crawlLinks: true,
-      failOnError: false,
-    },
-    pages: [
-      { path: "/" },
-      { path: "/about" },
-      { path: "/experience" },
-      { path: "/projects" },
-      { path: "/certifications" },
-      { path: "/contact" },
-    ],
   },
   vite: {
-    // GitHub Pages serves project sites from /<repo>/; set BASE_PATH in CI.
+    // GitHub Pages project sites are served from /<repo>/; CI sets BASE_PATH.
     base: process.env["BASE_PATH"] || "/",
   },
 });

@@ -25,20 +25,17 @@ jobs:
           bun-version: latest
 
       - name: Install dependencies
-        run: bun install --frozen-lockfile
+        run: bun install
 
-      - name: Build (static prerender)
+      - name: Build
         env:
-          # Project pages are served from https://<user>.github.io/<repo>/.
-          # Leave empty (BASE_PATH: "/") if you use a custom domain or a user/org site.
+          # Project pages live at https://<user>.github.io/<repo>/.
+          # Set BASE_PATH to "/" instead if you use a custom domain or a user/org site.
           BASE_PATH: /${{ github.event.repository.name }}/
         run: bun run build
 
-      - name: Prepare static output
-        run: |
-          # SPA fallback + disable Jekyll processing
-          cp dist/client/index.html dist/client/404.html || true
-          touch dist/client/.nojekyll
+      - name: Snapshot routes to static HTML
+        run: node scripts/snapshot-pages.mjs
 
       - uses: actions/configure-pages@v5
 
