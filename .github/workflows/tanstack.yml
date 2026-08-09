@@ -30,7 +30,7 @@ jobs:
 
       - name: Build GitHub Pages site
         env:
-          BASE_PATH: /${{ github.event.repository.name }}/
+          BASE_PATH: /
         run: bun run build:pages
 
       - name: Prepare GitHub Pages
