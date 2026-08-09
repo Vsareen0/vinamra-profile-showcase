@@ -28,36 +28,33 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      - name: Build static site
+      - name: Build GitHub Pages site
         env:
           BASE_PATH: /${{ github.event.repository.name }}/
-        run: bun run build
-
-      - name: Inspect output
-        run: |
-          echo "===== PUBLIC OUTPUT ====="
-          find .output/public -maxdepth 4 -type f | sort
+        run: bun run build:pages
 
       - name: Prepare GitHub Pages
         run: |
-          touch .output/public/.nojekyll
+          touch dist-pages/.nojekyll
 
-          if [ -f ".output/public/_shell.html" ]; then
-            cp .output/public/_shell.html .output/public/index.html
-            cp .output/public/_shell.html .output/public/404.html
-          elif [ -f ".output/public/index.html" ]; then
-            cp .output/public/index.html .output/public/404.html
+          if [ -f "dist-pages/index.html" ]; then
+            cp dist-pages/index.html dist-pages/404.html
           else
-            echo "ERROR: No SPA shell generated"
-            find .output/public -maxdepth 3 -type f
+            echo "ERROR: dist-pages/index.html was not generated"
+            find dist-pages -maxdepth 3 -type f || true
             exit 1
           fi
+
+      - name: Inspect output
+        run: |
+          echo "===== GitHub Pages Output ====="
+          find dist-pages -maxdepth 3 -type f | sort
 
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .output/public
+          path: dist-pages
 
   deploy:
     needs: build
